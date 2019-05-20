@@ -10,27 +10,36 @@
 
 int main(int argc, const char * argv[]) {
     
-    int a[101][101],b[101];
-    int m,n,i,j,sum[101];
+    int a[101][101],b[101][101];
+    int l,m,n,i,j,k;
+    long long int c[101][101];
     
-    scanf("%d %d", &n, &m);
+    scanf("%d %d %d", &l, &m, &n);
     
-    for(i=0; i<n; i++){
+    for(i=0; i<l; i++){
         for(j=0; j<m; j++){
             scanf("%d",&a[i][j]);
         }
+        scanf("\n");
     }
     
     for(i=0; i<m; i++){
-        scanf("%d",&b[i]);
+        for(j=0; j<n; j++){
+            scanf("%d",&b[i][j]);
+        }
+        scanf("\n");
     }
     
-    for(i=0; i<n; i++){
-        sum[i] = 0;
-        for(j=0; j<m; j++){
-            sum[i] += a[i][j]*b[j];
+    for(i=0; i<l; i++){
+        for(j=0; j<n; j++){
+            c[i][j] = 0;
+            for(k=0; k<m; k++){
+                c[i][j] += (a[i][k]*b[k][j]);
+            }
+            printf("%lld",c[i][j]);
+            if(j<n-1)printf(" ");
         }
-        printf("%d\n",sum[i]);
+        printf("\n");
     }
     
     return 0;
